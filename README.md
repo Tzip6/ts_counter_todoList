@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## YouTube - DIA fox
-[DIA fox 채널]()
+[DIA fox 채널](https://youtu.be/DiVBeXpmSWU)
 
 ### `[React Project - 0] 기본설정 / 설치`
 #### `(typescript, create-react-app, react-hook)`
