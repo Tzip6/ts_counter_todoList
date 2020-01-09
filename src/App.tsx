@@ -1,15 +1,39 @@
 import React from 'react'
 import './App.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootStateType } from './modules/store'
+
+// action type constants
+const INCREASE = 'counter/INCREASE' as const
+const DECREASE = 'counter/DECREASE' as const
+
+// create actions functions
+const increase = () => ({ type: INCREASE })
+const decrease = () => ({ type: DECREASE })
+type CounterActions = ReturnType<typeof increase> | ReturnType<typeof decrease>
+
+// reducer
+export const counterReducer = (state: number = 0, action: CounterActions) => {
+  switch (action.type) {
+    case 'counter/INCREASE':
+      return state + 1
+    case 'counter/DECREASE':
+      return state - 1
+    default:
+      return state
+  }
+}
 
 const App: React.FC = () => {
-  const [count, setCount] = React.useState(0)
 
+  const count = useSelector((state: RootStateType) => state.count)
+  const dispatch = useDispatch()
   const onIncrease = () => {
-    setCount(count + 1)
+    dispatch(increase())
   }
 
   const onDecrease = () => {
-    setCount(count - 1)
+    dispatch(decrease())
   }
 
   return (
